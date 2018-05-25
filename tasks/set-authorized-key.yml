@@ -1,0 +1,8 @@
+
+- name: Set authorized key, removing all authorized keys already set
+  authorized_key:
+    user: root
+    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+    state: present
+    exclusive: True # Removes existing authorized_keys
+
